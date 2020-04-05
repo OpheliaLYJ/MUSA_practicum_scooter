@@ -1,0 +1,55 @@
+body {
+    padding: 0;
+    overflow: hidden;
+    font-family: colfax, helvetica, arial, sans-serif;
+}
+
+p.main {
+  font-size: 24px;
+}
+
+.legend {
+  position: absolute;
+  right: 0;
+  width: 100px;
+  height: 30px;
+  background: grey;
+  z-index: 2000;
+}
+
+#sidebar {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #B7A9A1;
+}
+
+#map {
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  top: 0;
+  right: 0;
+}
+
+#nextButton {
+  position: relative;
+  left: 20px;
+}
+
+#lastButton {
+  position: relative;
+  left: 20px;
+}
+
+#title {
+  color: white;
+  padding: 20px;
+}
+
+#description {
+  color: white;
+  padding: 20px;
+}
