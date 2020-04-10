@@ -1,3 +1,4 @@
+/*
 //This function calculate trip durations (in minute) for scooter trips
 var addDuration = function(layer) {
   layer.feature.properties.DURATION = moment(layer.feature.properties.END_TIME, 'dd/mm/yyyy hh:mm').diff(
@@ -20,7 +21,6 @@ var Austin_circle = {
   fillOpacity: 0.8
 };
 
-
 //This function filter the trips taking place in morning peak hours (7-9)
 var morning = function(feature) {
   var morningBegin = moment('1/6/2019 6:59', 'dd/mm/yyyy hh:mm');
@@ -32,7 +32,7 @@ var morning = function(feature) {
 //This function filter the trips with distance longer than 1.5 mile
 var longTrip = function(feature) {
   return feature.properties.TRIP_LENGTH > 1.5;
-};
+}; */
 
 
 //Remove layers
@@ -43,13 +43,47 @@ var removeMarkers = function() {
           });
 };
 
-var AustinColor = function (d) {
-    return d > 1000 ? '#800026' :
-           d > 500  ? '#BD0026' :
-           d > 200  ? '#E31A1C' :
-           d > 100  ? '#FC4E2A' :
-           d > 50   ? '#FD8D3C' :
-           d > 20   ? '#FEB24C' :
-           d > 10   ? '#FED976' :
-                      '#FFEDA0';
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: 'red',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    };
+    info.update(layer.feature.properties);
+}
+
+function resetHighlight(e) {
+    featureGroup.resetStyle(e.target);
+    info.update();
+}
+
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+function onEachFeature(feature, layer) {
+    layer.on({
+//        layer.myTag = "myGeoJSON",
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+};
+
+function brewStyle(feature) {
+    return {
+        fillColor: brew.getColorInRange(feature.properties.ORIGINS_CNT),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
 }
