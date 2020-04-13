@@ -35,14 +35,17 @@ p.main {
   left: 20px;
 }
 
-#title {
+#title,
+#description,
+#dropdown {
+  position: relative;
   color: white;
-  padding: 20px;
+  left: 20px;
 }
 
-#description {
-  color: white;
-  padding: 20px;
+#selectCity {
+  position: relative;
+  left: 20px;
 }
 
 .info {

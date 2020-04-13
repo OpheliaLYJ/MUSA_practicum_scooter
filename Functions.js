@@ -43,6 +43,14 @@ var removeMarkers = function() {
           });
 };
 
+var removeTracts = function() {
+  map.eachLayer(function(layer) {
+    if ( layer.myTag &&  layer.myTag === "tract") {
+            map.removeLayer(layer)}
+          });
+};
+
+
 function highlightFeature(e) {
     var layer = e.target;
 
@@ -69,8 +77,8 @@ function zoomToFeature(e) {
 }
 
 function onEachFeature(feature, layer) {
+    layer.myTag = "tract";
     layer.on({
-//        layer.myTag = "myGeoJSON",
         mouseover: highlightFeature,
         mouseout: resetHighlight,
         click: zoomToFeature

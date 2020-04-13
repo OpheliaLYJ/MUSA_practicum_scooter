@@ -19,7 +19,6 @@ var info = L.control();
 var legend;
 
 
-
 $(document).ready(function() {
   $.ajax(AUTract).done(function(data) {
     var parsedData = JSON.parse(data);
@@ -80,22 +79,22 @@ $(document).ready(function() {
 var slides = [
   //morning trips
   { title: "Scooter trip origins in each census tract, Austin, July - September, 2019", description: "Description1",
-  city: 'Austin', color: "#fed352", zoom: 13, center: AUcenter, data: AUTract, divide: 5000},
+  city: 'AU', color: "#fed352", zoom: 13, center: AUcenter, data: AUTract, divide: 5000},
   //morning trips
   { title: "Scooter trip origins in each census tract, Chicago, July - September, 2019", description: "Description2",
-  city: 'Chicago', color: "#e46c4d", zoom: 13, center: CHcenter, data: CHTract, divide: 1000},
+  city: 'CH', color: "#e46c4d", zoom: 13, center: CHcenter, data: CHTract, divide: 1000},
   //afternoon trips
   { title: "Scooter trip origins in each census tract, Washington D.C., July - September, 2019", description: "Description3",
-  city: 'Washington D.C.', color: "#02bbca", zoom: 13, center: DCcenter, data: DCTract, divide: 3000},
+  city: 'DC', color: "#02bbca", zoom: 13, center: DCcenter, data: DCTract, divide: 3000},
   //afternoon trips
   { title: "Scooter trip origins in each census tract, Kansas City, July - September, 2019", description: "Description4",
-  city: 'Kansas City', color: "#175a94", zoom: 13, center: KCcenter, data: KCTract, divide: 3000},
+  city: 'KC', color: "#175a94", zoom: 13, center: KCcenter, data: KCTract, divide: 3000},
   //long trips (longer than 1.5mile)
   { title: "Scooter trip origins in each census tract, Louisville, July - September, 2019", description: "Description5",
-  city: 'Louisville', color: "#99d45d", zoom: 13, center: LVcenter, data: LVTract, divide: 5000},
+  city: 'LV', color: "#99d45d", zoom: 13, center: LVcenter, data: LVTract, divide: 5000},
   //long trips (longer than 30 minutes)
   { title: "Scooter trip origins in each census tract, Minneapolis, July - September, 2019", description: "Description6",
-  city: 'Minneapolis', color: "#9979c1", zoom: 13, center: MNPcenter, data: MNPTract, divide: 1000}
+  city: 'MNP', color: "#9979c1", zoom: 13, center: MNPcenter, data: MNPTract, divide: 1000}
 ];
 
 var loadSlide = function(slide) {
@@ -122,7 +121,7 @@ var next = function(){
     $('#nextButton').hide();
   }
   loadSlide(slides[currentSlide]);
-  removeMarkers();
+  removeTracts();
 
   $(document).ready(function() {
     $.ajax(slides[currentSlide].data).done(function(data) {
@@ -156,7 +155,9 @@ var next = function(){
     info.addTo(map);
 
     //Remove existing legend
-    if (legend) {map.removeControl(legend)};
+    if (legend) {
+      console.log("legend exists on previous page");
+        map.removeControl(legend);}
     //Add custom legend
     legend = L.control({position: 'bottomright'});
     legend.onAdd = function (map) {
@@ -189,7 +190,7 @@ var previous = function(){
     $('#lastButton').show();
   };
   loadSlide(slides[currentSlide]);
-  removeMarkers();
+  removeTracts();
   $(document).ready(function() {
     $.ajax(slides[currentSlide].data).done(function(data) {
       var parsedData = JSON.parse(data);
@@ -221,9 +222,10 @@ var previous = function(){
     };
     info.addTo(map);
 
-
     //Remove existing legend
-    if (legend) {map.removeControl(legend)};
+    if (legend) {
+      console.log("legend exists on previous page");
+        map.removeControl(legend);}
     //Add custom legend
     var legend = L.control({position: 'bottomright'});
     legend.onAdd = function (map) {

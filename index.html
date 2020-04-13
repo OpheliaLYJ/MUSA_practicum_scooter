@@ -12,10 +12,19 @@
   <body>
   <body>
   <div id = "sidebar">
+    <p id = "dropdown"> Select a city </p>
+    <select id = "selectCity">
+          <option value = "AU">Austin</option>
+          <option value = "CH">Chicago</option>
+          <option value = "DC">Washington D.C.</option>
+          <option value = "KC">Kansas City</option>
+          <option value = "LV">Louisville</option>
+          <option value = "MNP">Minneapolis</option>
+      </select>
     <h1 id="title">Scooter trip origins in each census tract, Austin, July - September, 2019</h1>
     <p id="description">Description1</p>
-    <button id="lastButton">PREVIOUS</button>
-    <button id="nextButton">NEXT</button>
+    <!-- <button id="lastButton">PREVIOUS</button>
+    <button id="nextButton">NEXT</button>  -->
   </div>
   <div id = "map">
     <h4 class = "info" ></h4>
@@ -28,7 +37,7 @@
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
-    <script src="slideModel_tract.js"></script>
+    <script src="slideModel_dropdown.js"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/moment-with-locales.min.js"></script>
     <script src="js/leaflet.js"></script>
