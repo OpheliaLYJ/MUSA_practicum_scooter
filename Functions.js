@@ -95,3 +95,7 @@ function brewStyle(feature) {
         fillOpacity: 0.7
     };
 }
+
+function dropdown_fuction() {
+  document.getElementById("cityDropdown").classList.toggle("show");
+}

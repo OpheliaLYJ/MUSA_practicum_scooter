@@ -113,7 +113,7 @@ loadSlide(slides[currentSlide])
 
 document.getElementById("selectCity").value = "AU";
 city = "AU";
-document.getElementById('selectCity').onchange = function () {
+document.getElementById("selectCity").onchange = function () {
     city = document.getElementById("selectCity").value;
     console.log(city);
     for (var i = 0; i < slides.length; i++){
