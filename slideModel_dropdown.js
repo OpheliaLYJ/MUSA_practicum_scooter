@@ -85,9 +85,15 @@ var loadSlide = function(slide) {
     };
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
+      if(var_display == "ORIGINS_CNT" || var_display == "JOBS_IN_TRACT") {
         this._div.innerHTML = '<h4>Value</h4>' +  (props ?
-            '<b>' + props.GEOID + '</b><br />' + Math.round(props[var_display], 2)
+            '<b>' + props.GEOID + '</b><br />' + Math.round(props[var_display])
             : 'Hover over a census tract');
+      } else {
+        this._div.innerHTML = '<h4>Value</h4>' +  (props ?
+            '<b>' + props.GEOID + '</b><br />' + (Math.round(props[var_display] * 100) / 100).toFixed(2)
+            : 'Hover over a census tract');
+      }
     };
     info.addTo(map);
 
@@ -102,12 +108,21 @@ var loadSlide = function(slide) {
           grades = brew.breaks,
           labels = [];
 
-      // loop through origin_cnt intervals and generate a label with a colored square for each interval
+      // loop through variable intervals and generate a label with a colored square for each interval
       for (var i = 0; i < grades.length; i++) {
-          div.innerHTML +=
-          labels.push(
-              '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +
-              Math.round(grades[i]) + ((grades[i + 1]) ? '&ndash;' + Math.round(grades[i + 1]) : '+'));
+          if (var_display == "ORIGINS_CNT" || var_display == "JOBS_IN_TRACT") {
+            div.innerHTML +=
+            labels.push(
+                '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +
+                Math.round(grades[i]) + ((grades[i + 1]) ? '&ndash;' + Math.round(grades[i + 1]) : '+'));
+          } else {
+            div.innerHTML +=
+            labels.push(
+                '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +
+                (Math.round(grades[i] * 100) / 100).toFixed(2) + ((grades[i + 1]) ? '&ndash;' +(Math.round(grades[i+1] * 100) / 100).toFixed(2) : '+'));
+      //      (Math.round(grades[i] * 100) / 100).toFixed(2);
+       }
+
       };
       div.innerHTML = labels.join('<br>');
       return div;
