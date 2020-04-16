@@ -24,6 +24,7 @@ var info = L.control();
 var legend;
 var currentSlide = 0;
 var city;
+var var_display;
 
 var slides = [
   //morning trips
@@ -56,9 +57,14 @@ var loadSlide = function(slide) {
       var parsedData = JSON.parse(data);
       values = [];
       for (var i = 0; i < parsedData.features.length; i++){
+          if (parsedData.features[i].properties[var_display] == null) continue;
+          values.push(parsedData.features[i].properties[var_display]);
+      };
+      /*
+      for (var i = 0; i < parsedData.features.length; i++){
           if (parsedData.features[i].properties['ORIGINS_CNT'] == null) continue;
           values.push(parsedData.features[i].properties['ORIGINS_CNT']);
-      };
+      }; */
       brew = new classyBrew();
       brew.setSeries(values);
       brew.setNumClasses(9);
@@ -77,7 +83,7 @@ var loadSlide = function(slide) {
     };
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
-        this._div.innerHTML = '<h4>Origins Count</h4>' +  (props ?
+        this._div.innerHTML = '<h4>Value</h4>' +  (props ?
             '<b>' + props.GEOID + '</b><br />' + Math.round(props.ORIGINS_CNT)
             : 'Hover over a census tract');
     };
@@ -113,15 +119,20 @@ loadSlide(slides[currentSlide])
 
 document.getElementById("selectCity").value = "AU";
 city = "AU";
+var_display = "ORIGINS_CNT"
 document.getElementById("selectCity").onchange = function () {
-    city = document.getElementById("selectCity").value;
-    console.log(city);
-    for (var i = 0; i < slides.length; i++){
-        if (city != slides[i].city) continue;
-        else {
-          console.log("found " + i)
-          currentSlide = i;
-          removeTracts();
-          loadSlide(slides[currentSlide]);
-    };};
+  city = document.getElementById("selectCity").value;
 };
+
+document.getElementById("selectVar").onchange = function () {
+  var_display = document.getElementById("selectVar").value;
+  console.log(var_display);
+  for (var i = 0; i < slides.length; i++){
+      if (city != slides[i].city) continue;
+      else {
+        console.log("found " + i)
+        currentSlide = i;
+        removeTracts();
+        loadSlide(slides[currentSlide]);
+  };};
+}

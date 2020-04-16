@@ -101,13 +101,14 @@ p.main {
 
 #title,
 #description,
-#city_dropdown {
+#city_dropdown,
+#var_dropdown {
   position: relative;
   color: white;
   left: 20px;
 }
 
-#selectCity {
+#selectCity, #selectVar {
   position: relative;
   left: 20px;
 }
