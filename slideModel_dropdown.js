@@ -85,7 +85,7 @@ var loadSlide = function(slide) {
     };
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
-      if(var_display == "ORIGINS_CNT" || var_display == "JOBS_IN_TRACT") {
+      if(var_display == "ORIGINS_CNT" || var_display == "JOBS_IN_TRACT" || var_display == "MEDRENT") {
         this._div.innerHTML = '<h4>Value</h4>' +  (props ?
             '<b>' + props.GEOID + '</b><br />' + Math.round(props[var_display])
             : 'Hover over a census tract');
@@ -110,7 +110,7 @@ var loadSlide = function(slide) {
 
       // loop through variable intervals and generate a label with a colored square for each interval
       for (var i = 0; i < grades.length; i++) {
-          if (var_display == "ORIGINS_CNT" || var_display == "JOBS_IN_TRACT") {
+          if (var_display == "ORIGINS_CNT" || var_display == "JOBS_IN_TRACT" || var_display == "MEDRENT") {
             div.innerHTML +=
             labels.push(
                 '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +
