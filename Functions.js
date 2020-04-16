@@ -87,7 +87,7 @@ function onEachFeature(feature, layer) {
 
 function brewStyle(feature) {
     return {
-        fillColor: brew.getColorInRange(feature.properties.ORIGINS_CNT),
+        fillColor: brew.getColorInRange(feature.properties[var_display]),
         weight: 2,
         opacity: 1,
         color: 'white',

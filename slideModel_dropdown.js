@@ -68,7 +68,9 @@ var loadSlide = function(slide) {
       brew = new classyBrew();
       brew.setSeries(values);
       brew.setNumClasses(9);
-      brew.setColorCode("YlGnBu");
+      if (var_display == "ORIGINS_CNT") {
+        brew.setColorCode("YlGnBu");
+      } else {brew.setColorCode("RdPu");}
       brew.classify("jenks"); //equal_interval, jenks, quantile
       featureGroup = L.geoJson(parsedData, {
         style: brewStyle,
@@ -84,7 +86,7 @@ var loadSlide = function(slide) {
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
         this._div.innerHTML = '<h4>Value</h4>' +  (props ?
-            '<b>' + props.GEOID + '</b><br />' + Math.round(props.ORIGINS_CNT)
+            '<b>' + props.GEOID + '</b><br />' + Math.round(props[var_display], 2)
             : 'Hover over a census tract');
     };
     info.addTo(map);
@@ -105,7 +107,7 @@ var loadSlide = function(slide) {
           div.innerHTML +=
           labels.push(
               '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +
-              Math.round(grades[i]) + (grades[i + 1] ? '&ndash;' + Math.round(grades[i + 1]) : '+'));
+              Math.round(grades[i]) + ((grades[i + 1]) ? '&ndash;' + Math.round(grades[i + 1]) : '+'));
       };
       div.innerHTML = labels.join('<br>');
       return div;
@@ -120,11 +122,22 @@ loadSlide(slides[currentSlide])
 document.getElementById("selectCity").value = "AU";
 city = "AU";
 var_display = "ORIGINS_CNT"
+
 document.getElementById("selectCity").onchange = function () {
   city = document.getElementById("selectCity").value;
+  var_display = document.getElementById("selectVar").value;
+  for (var i = 0; i < slides.length; i++){
+      if (city != slides[i].city) continue;
+      else {
+        console.log("found " + i)
+        currentSlide = i;
+        removeTracts();
+        loadSlide(slides[currentSlide]);
+  };};
 };
 
 document.getElementById("selectVar").onchange = function () {
+  city = document.getElementById("selectCity").value;
   var_display = document.getElementById("selectVar").value;
   console.log(var_display);
   for (var i = 0; i < slides.length; i++){
