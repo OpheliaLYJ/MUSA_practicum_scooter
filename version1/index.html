@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+ integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+ crossorigin=""/>
+  </head>
+  <body>
+    <div>
+    <h4>Scooter header</h4>
+  </div>
+    <div class="topnav">
+      <a href="#slide3">Slide3</a>
+      <a href="#slide2">Slide2</a>
+      <a class="active" href="#slide1">Slide1</a>
+    </div>
+  <div id = "sidebar">
+
+    <p id = "city_dropdown"> Select a city </p>
+    <select id = "selectCity">
+          <option value = "AU">Austin</option>
+          <option value = "CH">Chicago</option>
+          <option value = "DC">Washington D.C.</option>
+          <option value = "KC">Kansas City</option>
+          <option value = "LV">Louisville</option>
+          <option value = "MNP">Minneapolis</option>
+    </select>
+
+    <h1 id="title">Scooter trip origins in each census tract, Austin, July - September, 2019</h1>
+    <p id="description">Description1</p>
+    <!-- <button id="lastButton">PREVIOUS</button>
+    <button id="nextButton">NEXT</button>  -->
+    <p id = "var_dropdown"> Select a variable to display </p>
+    <select id = "selectVar">
+      <option value = "ORIGINS_CNT">Number of scooter trip origins</option>
+      <option value = "PCOM30PLUS">% of resident commuting 30+ minutes</option>
+      <option value = "PDRIVE">% of resident driving to work</option>
+      <option value = "JOBS_IN_TRACT">Number of jobs</option>
+      <option value = "MEDRENT">Median Rent</option>
+    </select>
+
+    <div id="myChart" style = "width:200px;height:250px;"></div>
+  </div>
+  <div id = "map">
+    <h4 class = "info" ></h4>
+
+  </div>
+
+    <!-- Javascript Imports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <script src="slideModel_dot.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/moment-with-locales.min.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="Functions.js"></script>
+    <script src="main.js"></script>
+    <script src="js/classyBrew.js"></script>
+    <script src="js/colorbrewer.js"></script>
+    <script src="js/colorbrewer_schemes.js"></script>
+
+  </body>
+</html>

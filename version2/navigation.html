@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+ integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+ crossorigin=""/>
+  </head>
+  <body ng-app = "mos" class = "ng-scope" data-gr-c-s-loaded = "true">
+    <div ui-view class = "ng-scope">
+      <headroom head-room-reset class = "header ng-scope ng-isolate-scope
+      headroom headroom--not-bottom headroom--pinned headroom--top" offset = "120">
+      <!-- <div class = "ng-isolated-scope"> -->
+        <a href="#slide3" class = "nav nav-pills pull-right" role = "button" aria-expanded aria-haspopup = "true">HOME</a>
+        <a ui-sref = "charts" href = "#!/">
+          <div id = "logo"></div>
+          <h4>Scooter header</h4>
+        </a>
+
+    <!-- </div> -->
+   </headroom>
+
+  <ui-view class = "content ng-scope">
+    <div class = "panel-snap-container ng-scope" mos-panel-snap>
+      <section class = "hero chart-hero active">
+        <div class= "container space">
+          <!-- <div id = "map"></div> -->
+
+          <div class = "row text-center">
+            <h1 class = "ng-binding">
+              "Title title title"
+            </h1>
+            <p class = "ng-binding">
+              "This is the description This is the description This is the description "
+            </p>
+          </div>
+          <br>
+          <div class = "row text-center">
+            <div class = "dropdown">
+              <button class = "dropbtn" mos-panel-snap-next>Select a city</button>
+                <div class="dropdown-content">
+                  <a href="./citypages/Louisville.html">Philadelphia</a>
+                  <a href="#slide2">New York City</a>
+                  <a href="#slide3">City 3</a>
+                  <a href="#slide4">City 4</a>
+                  <a href="#slide5">City 5</a>
+                  <a href="#slide6">City 6</a>
+                  <a href="#slide7">City 7</a>
+                  <a href="#slide8">City 8</a>
+                  <a href="#slide9">City 9</a>
+                </div>
+          </div>
+        </div>
+
+      </section>
+      <section class = "intro-container">
+        <div class = "intro-row text-center">
+          <p> Introduction paragraph Introduction paragraph Introduction paragraph Introduction paragraph Introduction paragraph
+          </p>
+        </div>
+      </section>
+    </ui-view>
+  </div>
+
+
+    <!-- Javascript Imports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/angular.headroom.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/moment-with-locales.min.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="Functions.js"></script>
+    <script src="navigation.js"></script>
+    <script src="js/classyBrew.js"></script>
+    <script src="js/colorbrewer.js"></script>
+    <script src="js/colorbrewer_schemes.js"></script>
+
+  </body>
+</html>

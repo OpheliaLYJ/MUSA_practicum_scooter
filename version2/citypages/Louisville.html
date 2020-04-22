@@ -10,17 +10,24 @@
  crossorigin=""/>
   </head>
   <body>
-    <div>
-    <h4>Scooter header</h4>
-  </div>
-    <div class="topnav">
-      <a href="#slide3">Slide3</a>
-      <a href="#slide2">Slide2</a>
-      <a class="active" href="#slide1">Slide1</a>
-    </div>
+      <headroom head-room-reset class = "header ng-scope ng-isolate-scope
+      headroom headroom--not-bottom headroom--pinned headroom--top" offset = "120">
+        <a href="../navigation.html" class = "nav nav-pills pull-right" role = "button" aria-expanded aria-haspopup = "true">HOME</a>
+        <div class = "nav nav-pills pull-right dropdown" role = "button" aria-expanded aria-haspopup = "true">Change Your City
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+        <a ui-sref = "charts" href = "#!/">
+          <div id = "logo"></div>
+          <h4>Scooter header</h4>
+        </a>
+   </headroom>
   <div id = "sidebar">
 
-    <p id = "city_dropdown"> Select a city </p>
+    <!-- <p id = "city_dropdown"> Select a city </p>
     <select id = "selectCity">
           <option value = "AU">Austin</option>
           <option value = "CH">Chicago</option>
@@ -28,9 +35,9 @@
           <option value = "KC">Kansas City</option>
           <option value = "LV">Louisville</option>
           <option value = "MNP">Minneapolis</option>
-    </select>
+    </select> -->
 
-    <h1 id="title">Scooter trip origins in each census tract, Austin, July - September, 2019</h1>
+    <h1 id="title">Scooter trip origins in each census tract, Louisville, July - September, 2019</h1>
     <p id="description">Description1</p>
     <!-- <button id="lastButton">PREVIOUS</button>
     <button id="nextButton">NEXT</button>  -->
@@ -42,6 +49,8 @@
       <option value = "JOBS_IN_TRACT">Number of jobs</option>
       <option value = "MEDRENT">Median Rent</option>
     </select>
+
+    <div id="myChart" style = "width:200px;height:250px;"></div>
   </div>
   <div id = "map">
     <h4 class = "info" ></h4>
@@ -55,15 +64,22 @@
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
-    <script src="slideModel_dropdown.js"></script>
-    <script src="js/moment.min.js"></script>
-    <script src="js/moment-with-locales.min.js"></script>
-    <script src="js/leaflet.js"></script>
-    <script src="Functions.js"></script>
-    <script src="main.js"></script>
-    <script src="js/classyBrew.js"></script>
-    <script src="js/colorbrewer.js"></script>
-    <script src="js/colorbrewer_schemes.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    <script src= "https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/angular.headroom.min.js"></script>
+
+    <script src="Louisville.js"></script>
+    <script src="../js/moment.min.js"></script>
+    <script src="../js/moment-with-locales.min.js"></script>
+    <script src="../js/leaflet.js"></script>
+    <script src="../Functions.js"></script>
+    <script src="LV_main.js"></script>
+    <script src="../js/classyBrew.js"></script>
+    <script src="../js/colorbrewer.js"></script>
+    <script src="../js/colorbrewer_schemes.js"></script>
 
   </body>
 </html>
