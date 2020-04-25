@@ -95,10 +95,9 @@ font-weight: bold;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
 }
-.info h4 {
-    margin: 0 0 5px;
-    text-align: center;
-    color: #777;
+.headroom h4 {
+    text-align: left;
+    color: white;
 }
 
 .legend {
@@ -349,6 +348,16 @@ h1 {
     margin-right: 10px;
 }
 
+.var-summary > h5 {
+  color: white;
+  padding-left: 20px;
+}
+
+.var-summary > h5>span {
+  color: black;
+  font-size: 18px;
+}
+
 /* h1:after {
     content: '';
     display: block;
@@ -357,3 +366,8 @@ h1 {
     width: 120px;
     left: 20px;
 } */
+
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}

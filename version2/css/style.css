@@ -92,10 +92,9 @@ font-weight: bold;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
 }
-.info h4 {
-    margin: 0 0 5px;
-    text-align: center;
-    color: #777;
+.headroom h4 {
+    text-align: left;
+    color: white;
 }
 
 .legend {
@@ -336,7 +335,7 @@ a {
     left: 0;
     bottom: 0;
     right: 0;
-    height: 100px;
+    height: 300px;
 }
 
 h1 {
@@ -350,4 +349,101 @@ h1:after {
     margin: 24px auto 48px auto;
     border-bottom: solid 4px;
     width: 120px;
+}
+
+.intro-row >p {
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align:justify;
+}
+
+.footer-container {
+    background-color: #2a2a2b;
+    background-repeat: no-repeat;
+    padding: 36px 0;
+    margin: 0 auto;
+}
+
+.footer-container strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.footer-container p {
+    color: #666;
+}
+
+.next {
+    position: relative;
+    top: 10px;
+    right: 24px;
+    z-index: 1000;
+    text-align: right;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 300;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    white-space: nowrap;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn-ghost-dark {
+    background: #666;
+    color: #fff;
+    border: 0!important;
+}
+
+.btn-next {
+    width: 40px;
+    height: 40px;
+    /* border-radius: 20px; /* to make it a circle */
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: inherit;
+    line-height: 1;
+    font-family: FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-angle-up:before {
+    content: "\f106";
 }

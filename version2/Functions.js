@@ -83,8 +83,10 @@ function onEachFeature(feature, layer) {
         mouseout: resetHighlight,
         click: zoomToFeature
     })
-    layer.bindPopup('<p>'+"Predicted scooter trips count: " + feature.properties.ORIGINS_CNT
-  + '<br>' + "Number of jobs: " + feature.properties.JOBS_IN_TRACT + '</p>');
+    layer.bindPopup('<p>'+"Predicted scooter trips count: " + feature.properties["PREDICTED.CNT"]
+  + '<br>' + "Number of jobs: " + feature.properties.JOBS_IN_TRACT
+  + '<br>' + "Percentage of white resident: " + feature.properties.PWHITE
+  + '</p>');
 };
 
 function brewStyle(feature) {

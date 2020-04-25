@@ -14,10 +14,10 @@
       <headroom head-room-reset class = "header ng-scope ng-isolate-scope
       headroom headroom--not-bottom headroom--pinned headroom--top" offset = "120">
       <!-- <div class = "ng-isolated-scope"> -->
-        <a href="#slide3" class = "nav nav-pills pull-right" role = "button" aria-expanded aria-haspopup = "true">HOME</a>
+        <a class = "nav nav-pills pull-right" id = "aboutUs" role = "button">About Us</a>
         <a ui-sref = "charts" href = "#!/">
           <div id = "logo"></div>
-          <h4>Scooter header</h4>
+          <h4>Scooter Tomorrow</h4>
         </a>
 
     <!-- </div> -->
@@ -31,10 +31,10 @@
 
           <div class = "row text-center">
             <h1 class = "ng-binding">
-              "Title title title"
+              Scooter Tomorrow
             </h1>
             <p class = "ng-binding">
-              "This is the description This is the description This is the description "
+              A toolkit for city planners and decision makers to better prepare for scooters
             </p>
           </div>
           <br>
@@ -42,8 +42,8 @@
             <div class = "dropdown">
               <button class = "dropbtn" mos-panel-snap-next>Select a city</button>
                 <div class="dropdown-content">
-                  <a href="./citypages/Louisville.html">Philadelphia</a>
-                  <a href="#slide2">New York City</a>
+                  <a href="./citypages/Philly.html">Philadelphia</a>
+                  <a href="./citypages/Madison.html">Madison</a>
                   <a href="#slide3">City 3</a>
                   <a href="#slide4">City 4</a>
                   <a href="#slide5">City 5</a>
@@ -58,10 +58,48 @@
       </section>
       <section class = "intro-container">
         <div class = "intro-row text-center">
-          <p> Introduction paragraph Introduction paragraph Introduction paragraph Introduction paragraph Introduction paragraph
+          <h2 class = "ng-binding">
+            Introduction & Motivation
+          </h2>
+          <p>Since Bird and Lime launched the first shared, dockless electric scooter services in Santa Monica, California in September 2017, scooters have rapidly spread across American cities, becoming a popular form of urban transportation. As of January 2020, there are 340 scooter share programs operating in 242 municipal areas and campuses across 40 different states (plus Washington D.C.). While scooter share providers initially entered new municipalities and markets without local officials’ permission or oversight, leading to spikes in scooter-related injuries and complaints of vehicles blocking sidewalks, cities have begun collaborating through coalitions like the Open Mobility Foundation to institute some oversight over these programs. Municipalities are now working with their scooter providers to ensure that their scooter share programs, among other goals, meet safety standards, distribute vehicles equitably across their cities, keep sidewalks clear, and protect rider privacy. Data standards like the Mobility Data Specification (MDS), created by the Los Angeles Department of Transportation, help cities share scooter ridership data and make sure that their providers are complying with their policies.
+          </p>
+          <br>
+        <p>While these data initiatives help address cities manage more mature scooter share programs, there are no widely adopted models in place that help cities without shared scooters introduce the vehicles into their markets. In this project, we use data from 6 different American cities with shared scooters to develop a model that estimates what peak-season demand will be in cities without existing programs. Our goal is to create a municipal scooter planning toolkit that helps cities learn from other municipalities that introduced scooters in the past. We hope that cities like Philadelphia, Pennsylvania and Madison, Wisconsin, which are considering adopting scooter share programs, will find this toolkit helpful as they work with providers to bring the vehicles to their communities.
           </p>
         </div>
       </section>
+        <div class = "footer-container">
+          <div class = "row">
+            <div class = "center-block text-center">
+              <p>
+                <strong>Credits</strong>
+              </p>
+              <p>This tool was developed by </p>
+            </div>
+            <br>
+            <div class = "center-block text-center">
+              <p>
+                <strong>Contact</strong>
+              </p>
+              <p>Question about this tool, the data </p>
+            </div>
+            <br>
+            <div class = "center-block text-center">
+              <p>
+                <strong>Full Markdown</strong>
+              </p>
+              <p>For more information and to see the full report, please visit <a href = "#link" target = "_blank">here</a>
+              </p>
+            </div>
+          </div>
+          <div class = "next">
+            <a type = "button" class = "btn btn-md btn-ghost-dark btn-next" id = "toTop">
+              <i class = "fa fa-angle-up">
+              </i>
+            </a>
+          </div>
+        </div>
+
     </ui-view>
   </div>
 
@@ -79,6 +117,7 @@
     <!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/angular.headroom.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-replace-svg="nest"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/moment-with-locales.min.js"></script>
     <script src="js/leaflet.js"></script>
