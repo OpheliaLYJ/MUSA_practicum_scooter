@@ -119,7 +119,7 @@ var loadSlide = function() {
     info.update = function (props) {
       if(var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT"
       || var_display == "MEDRENT" || var_display == "TOTHSEUNI"
-    || var_display == "MEDVALUE" || var_display == "MDHHINC") {
+    || var_display == "MEDVALUE" || var_display == "MDHHINC" || var_display == "TOTPOP") {
         this._div.innerHTML = '<h4>Value</h4>' +  (props ?
             '<b>' + props.GEOID + '</b><br />' + Math.round(props[var_display])
             : 'Hover over a census tract');
@@ -146,7 +146,7 @@ var loadSlide = function() {
       for (var i = 0; i < grades.length; i++) {
           if (var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT"
           || var_display == "MEDRENT" || var_display == "TOTHSEUNI"
-          || var_display == "MEDVALUE" || var_display == "MDHHINC") {
+          || var_display == "MEDVALUE" || var_display == "MDHHINC" || var_display == "TOTPOP") {
             div.innerHTML +=
             labels.push(
                 '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +

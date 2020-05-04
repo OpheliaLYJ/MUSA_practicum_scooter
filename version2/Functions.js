@@ -112,6 +112,13 @@ function updateTable(e) {
   $('#tb-mdinc').text('$' + e.target.feature.properties["MDHHINC"])
   $('#tb-mdvalue').text('$' + e.target.feature.properties["MEDVALUE"])
 
+  $('#tb-tile-pop').text(e.target.feature.properties["TILE_POP"])
+  $('#tb-tile-pred').text(e.target.feature.properties["TILE_PRED"])
+  $('#tb-tile-white').text(e.target.feature.properties["TILE_WHITE"]))
+  $('#tb-tile-jobs').text(e.target.feature.properties["TILE_JOBS"])
+  $('#tb-tile-mdinc').text('$' + e.target.feature.properties["TILE_INC"])
+  $('#tb-tile-mdvalue').text('$' + e.target.feature.properties["TILE_VALUE"])
+
   selected = {x: e.target.feature.properties[var_display], y: e.target.feature.properties["PREDICTED.CNT"]}
   rest = _.filter(mapped, function(each) {
     if (selected) {
