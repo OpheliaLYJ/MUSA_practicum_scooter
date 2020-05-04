@@ -73,7 +73,63 @@ function resetHighlight(e) {
 }
 
 function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
+  $('#button-reset').show();
+//  console.log(e.target.getBounds()._northEast, e.target.getBounds()._southWest);
+  map.fitBounds(e.target.getBounds().pad(Math.sqrt(2) / 4));
+//    map.setView(e.target.getCenter(), e.target.getCenter()+2)
+}
+
+var city_pop = $('#tb-pop').text()
+var city_pred = $('#tb-pred').text()
+var city_white = $('#tb-white').text()
+var city_jobs = $('#tb-jobs').text()
+var city_mdinc = $('#tb-mdinc').text()
+var city_mdvalue = $('#tb-mdvalue').text()
+
+var resetApplication = function() {
+  $('#tb-title').text("City Overview")
+  $('#tb-pct').text("")
+  $('#tb-pop').text(city_pop)
+  $('#tb-pred').text(city_pred)
+  $('#tb-white').text(city_white)
+  $('#tb-jobs').text(city_jobs)
+  $('#tb-mdinc').text(city_mdinc)
+  $('#tb-mdvalue').text(city_mdvalue)
+  $('#button-reset').hide();
+}
+
+$('#button-reset').click(resetApplication);
+
+function updateTable(e) {
+  $('#tb-title').text("Census Tract Overview")
+  $('#button-reset').show();
+//  console.log(e.target.feature.properties["PREDICTED.CNT"])
+  $('#tb-pct').text("Percentile")
+  $('#tb-pop').text(e.target.feature.properties["TOTPOP"])
+  $('#tb-pred').text(e.target.feature.properties["PREDICTED.CNT"])
+  $('#tb-white').text((Math.round(e.target.feature.properties["PWHITE"] * 100) / 100).toFixed(2) + '%')
+  $('#tb-jobs').text(e.target.feature.properties["JOBS_IN_TRACT"])
+  $('#tb-mdinc').text('$' + e.target.feature.properties["MDHHINC"])
+  $('#tb-mdvalue').text('$' + e.target.feature.properties["MEDVALUE"])
+
+  selected = {x: e.target.feature.properties[var_display], y: e.target.feature.properties["PREDICTED.CNT"]}
+  rest = _.filter(mapped, function(each) {
+    if (selected) {
+      return each.x !== selected.x || each.y !== selected.y
+    }
+    else {return true}
+  })
+  scatterChart.data.datasets = [{
+      label:"Selected",
+      backgroundColor: 'rgb(197,27,138)',
+      data: [selected]
+  },{
+      label: "Other",
+      backgroundColor: 'rgb(252,197,192)',
+      data: rest
+  }]
+
+  scatterChart.update({duration:0})
 }
 
 function onEachFeature(feature, layer) {
@@ -81,12 +137,27 @@ function onEachFeature(feature, layer) {
     layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
-        click: zoomToFeature
+        click:  updateTable//zoomToFeature
     })
-    layer.bindPopup('<p>'+"Predicted scooter trips count: " + feature.properties["PREDICTED.CNT"]
-  + '<br>' + "Number of jobs: " + feature.properties.JOBS_IN_TRACT
-  + '<br>' + "Percentage of white resident: " + feature.properties.PWHITE
-  + '</p>');
+
+/*
+    var popupStyle = {
+        'maxWidth': '400',
+        'className' : 'custom'
+        }
+
+    var popupContent = '<table class = table>'+ '<thead class = thead><tr><td>Census Tract Overview</td></tr></thead>'+ '<tbody>'
+    + '<tr><td>Predicted scooter trips count: </td>' + '<td>' + feature.properties["PREDICTED.CNT"] + '</td></tr>'
+    + '<tr><td>Number of jobs: </td>'  + '<td>' + feature.properties.JOBS_IN_TRACT + '</td></tr>'
+    + '<tr><td>White resident: </td>'  + '<td>' + (Math.round(feature.properties.PWHITE * 100) / 100).toFixed(2) + '%'+ '</td></tr>'
+    + '</tbody> </table>'
+
+  //   '<p>'+"Predicted scooter trips count: " + feature.properties["PREDICTED.CNT"]
+  // + '<br>' + "Number of jobs: " + feature.properties.JOBS_IN_TRACT
+  // + '<br>' + "Percentage of white resident: " + (Math.round(feature.properties.PWHITE * 100) / 100).toFixed(2)
+  // + '</p>';
+
+    layer.bindPopup(popupContent, popupStyle); */
 };
 
 function brewStyle(feature) {
@@ -102,4 +173,57 @@ function brewStyle(feature) {
 
 function dropdown_fuction() {
   document.getElementById("cityDropdown").classList.toggle("show");
+}
+
+function create_chart(selected, rest) {
+  scatterChart = new Chart(ctx, {
+      type: 'scatter',
+      data: {
+          datasets: [{
+              label:"No census tract selected",
+              backgroundColor: 'rgb(197,27,138)',
+              data: [selected]
+          },{
+              label: "Data",
+              backgroundColor: 'rgb(252,197,192)',
+              data: rest
+          }]
+      },
+      options: {
+          responsive: false,
+          maintainAspectRatio: false,
+          scales: {
+              xAxes: [{
+                  gridLines: {
+                    zeroLineWidth: 1.5,
+                    zeroLineColor: "white",
+                    lineWidth: 0.5,
+                    borderDash: [2, 2],
+                    color: "rgb(170, 170, 170)"},
+                  type: 'linear',
+                  position: 'bottom',
+                  ticks: {
+                    fontColor: "white"}
+              }],
+              yAxes:[{
+                  gridLines: {
+                    zeroLineWidth: 1,
+                    zeroLineColor: "white",
+                    lineWidth: 0.5,
+                    borderDash: [2, 2],
+                    color: "rgb(170, 170, 170)"},
+                  type: 'linear',
+                  ticks: {
+                    max: 45000,
+                    min: 0,
+                    stepSize: 5000,
+                    fontColor: "white"},
+              }]
+
+          },
+          legend: {
+            labels: {fontColor: "white"}
+          }
+      }
+  });
 }

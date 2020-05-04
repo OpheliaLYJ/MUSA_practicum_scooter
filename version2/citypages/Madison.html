@@ -37,7 +37,7 @@
           <option value = "MNP">Minneapolis</option>
     </select> -->
 
-    <h1 id="title">Predicted scooter trip origins in each census tract, Philadelphia</h1>
+    <h1 id="title">Predicted scooter demand at census tract level, Madison</h1>
     <!-- <p id="description">Description1</p> -->
     <!-- <button id="lastButton">PREVIOUS</button>
     <button id="nextButton">NEXT</button>  -->
@@ -46,11 +46,37 @@
       <option value = "PREDICTED.CNT">Predicted scooter trips count</option>
       <option value = "PCOM30PLUS">% of resident commuting 30+ minutes</option>
       <option value = "PDRIVE">% of resident driving to work</option>
+      <option value = "PTRANS">% of resident taking public transit to work</option>
       <option value = "JOBS_IN_TRACT">Number of jobs</option>
-      <option value = "MEDRENT">Median Rent</option>
+      <option value = "MDHHINC">Median household income</option>
+      <option value = "MEDRENT">Median rent</option>
+      <option value = "MEDVALUE">Median housing value</option>
+      <option value = "TOTHSEUNI">Total housing units</option>
+      <option value = "PWHITE">% of white resident</option>
     </select>
     <div class = "var-summary">
-      <h5>
+      <div>
+      <h4 id = "tb-title">City Overview</h4>
+      <button id="button-reset">Reset Table</button>
+      </div>
+      <table class = "sidebar-table">
+        <thead class = "thead-inverse">
+          <tr>
+            <th style = "width: 180px">Feature</th>
+            <th style = "width: 80px">Value</th>
+            <th style = "width: 20px" id = "tb-pct"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Total population: </td><td id = "tb-pop">258000</td></tr>
+          <tr><td>Predicted scooter trips: </td><td id = "tb-pred">327000</td></tr>
+          <tr><td>White resident: </td><td id = "tb-white">87%</td></tr>
+          <tr><td>Number of jobs: </td><td id = "tb-jobs">303000</td></tr>
+          <tr><td>Median Household Income: </td><td id = "tb-mdinc">$54000</td></tr>
+          <tr><td>Median Housing Value: </td><td id = "tb-mdvalue">$167700</td></tr>
+        </tbody>
+      </table>
+      <!-- <h5>
         Total population: <span id="var-value">258,000</span>
         <br>
         Total predicted scooter trips: <span id="var-value">327,000</span>
@@ -60,13 +86,16 @@
         Total jobs: <span id="var-value">303,000</span>
         <br>
         Percentage of white resident: <span id="var-value">87%</span>
-      </h5>
+      </h5> -->
     </div>
+    <div class = "equity">
+    <h4>Equity Score: <span id = "equity_score">60</span></h4>
+  </div>
 
-    <div id="myChart" style = "width:200px;height:250px;"></div>
+    <canvas id="myChart" width = "320" height = "260"></canvas>
   </div>
   <div id = "map">
-    <h4 class = "info" ></h4>
+    <!-- <h4 class = "info" ></h4> -->
 
   </div>
 
@@ -83,6 +112,7 @@
     <!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/angular.headroom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <script src="Madison.js"></script>
     <script src="../js/moment.min.js"></script>

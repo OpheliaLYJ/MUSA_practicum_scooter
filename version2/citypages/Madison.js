@@ -22,9 +22,14 @@ var values;
 var brew;
 var info = L.control();
 var legend;
-var currentSlide = 4;
 var city;
 var var_display;
+var zipped
+var mapped
+var ctx = document.getElementById('myChart').getContext('2d')
+var selected
+var rest
+var scatterChart
 
 var slides = [
   //morning trips
@@ -55,6 +60,36 @@ var loadSlide = function() {
   $(document).ready(function() {
     $.ajax(MDTract).done(function(data) {
       var parsedData = JSON.parse(data);
+
+      var x_var = _.map(parsedData.features, function(eachFeature) {return eachFeature.properties[var_display]})
+      var trips = _.map(parsedData.features, function(eachFeature) {return eachFeature.properties["PREDICTED.CNT"]})
+
+      zipped = _.zip(x_var, trips)
+      mapped = _.map(zipped, function(arr) {
+        return {x: arr[0], y: arr[1]}
+      })
+
+    //  select = {}
+
+  //    selected = [_.head(mapped)] // [mapped[0]]
+      rest = _.filter(mapped, function(each) {
+        if (selected) {
+          return each.x !== selected.x || each.y !== selected.y
+        }
+        else {return true}
+      })
+
+      if (scatterChart) scatterChart.destroy()
+      create_chart(selected, rest)
+
+  /*    if (var_display !== "PREDICTED.CNT") {
+        create_chart(selected, rest)
+      } else {
+        selected = {}
+        rest = []
+        create_chart(selected, rest)
+      } */
+
       values = [];
       for (var i = 0; i < parsedData.features.length; i++){
           if (parsedData.features[i].properties[var_display] == null) continue;
@@ -62,7 +97,7 @@ var loadSlide = function() {
       };
       brew = new classyBrew();
       brew.setSeries(values);
-      brew.setNumClasses(9);
+      brew.setNumClasses(5);
       if (var_display == "PREDICTED.CNT") {
         brew.setColorCode("YlGnBu");
       } else {brew.setColorCode("RdPu");}
@@ -72,6 +107,8 @@ var loadSlide = function() {
         onEachFeature: onEachFeature
     }).addTo(map);
 
+
+
     //Add info control
     info.onAdd = function (map) {
         this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
@@ -80,7 +117,9 @@ var loadSlide = function() {
     };
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
-      if(var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT" || var_display == "MEDRENT") {
+      if(var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT"
+      || var_display == "MEDRENT" || var_display == "TOTHSEUNI"
+    || var_display == "MEDVALUE" || var_display == "MDHHINC") {
         this._div.innerHTML = '<h4>Value</h4>' +  (props ?
             '<b>' + props.GEOID + '</b><br />' + Math.round(props[var_display])
             : 'Hover over a census tract');
@@ -105,7 +144,9 @@ var loadSlide = function() {
 
       // loop through variable intervals and generate a label with a colored square for each interval
       for (var i = 0; i < grades.length; i++) {
-          if (var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT" || var_display == "MEDRENT") {
+          if (var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT"
+          || var_display == "MEDRENT" || var_display == "TOTHSEUNI"
+          || var_display == "MEDVALUE" || var_display == "MDHHINC") {
             div.innerHTML +=
             labels.push(
                 '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +
@@ -133,6 +174,7 @@ loadSlide()
 
 document.getElementById("selectVar").onchange = function () {
   var_display = document.getElementById("selectVar").value;
+  selected = {}
   console.log(var_display);
   // for (var i = 0; i < slides.length; i++){
   //     if (city != slides[i].city) continue;
@@ -143,3 +185,5 @@ document.getElementById("selectVar").onchange = function () {
         loadSlide();
 //  };};
 }
+
+//console.log(mapped)

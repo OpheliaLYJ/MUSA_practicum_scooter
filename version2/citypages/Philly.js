@@ -21,7 +21,6 @@ var values;
 var brew;
 var info = L.control();
 var legend;
-var currentSlide = 4;
 var city;
 var var_display;
 
@@ -61,7 +60,7 @@ var loadSlide = function() {
       };
       brew = new classyBrew();
       brew.setSeries(values);
-      brew.setNumClasses(9);
+      brew.setNumClasses(5);
       if (var_display == "PREDICTED.CNT") {
         brew.setColorCode("YlGnBu");
       } else {brew.setColorCode("RdPu");}
@@ -79,7 +78,9 @@ var loadSlide = function() {
     };
     // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
-      if(var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT" || var_display == "MEDRENT") {
+      if(var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT"
+      || var_display == "MEDRENT" || var_display == "TOTHSEUNI"
+      || var_display == "MEDVALUE" || var_display == "MDHHINC") {
         this._div.innerHTML = '<h4>Value</h4>' +  (props ?
             '<b>' + props.GEOID + '</b><br />' + Math.round(props[var_display])
             : 'Hover over a census tract');
@@ -104,7 +105,9 @@ var loadSlide = function() {
 
       // loop through variable intervals and generate a label with a colored square for each interval
       for (var i = 0; i < grades.length; i++) {
-          if (var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT" || var_display == "MEDRENT") {
+          if (var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT"
+          || var_display == "MEDRENT" || var_display == "TOTHSEUNI"
+          || var_display == "MEDVALUE" || var_display == "MDHHINC") {
             div.innerHTML +=
             labels.push(
                 '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +
