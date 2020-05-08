@@ -28,6 +28,8 @@ var MDcenter = [43.095655, -89.410670];
 var HFcenter = [41.77233588526917, -72.68400192260742];
 var HScenter = [29.8382614512946, -95.36064147949217];
 var JVcenter = [30.323100460201648, -81.62635803222656];
+var JCcenter = [40.73268976628568, -74.0669059753418];
+var OMcenter = [41.2824505509628, -96.16024017333984];
 
 var values;
 var brew;
@@ -41,7 +43,7 @@ var ctx = document.getElementById('myChart').getContext('2d')
 var selected
 var rest
 var scatterChart
-var city_data = JVTract;
+var city_data = OMTract;
 
 var loadSlide = function() {
   // console.log("this city is " + city)

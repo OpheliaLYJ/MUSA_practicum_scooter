@@ -499,3 +499,19 @@ h1 {
   text-decoration: none;
   cursor: pointer;
 }
+
+#button-resetMap {
+  background-color: #c51b8a;
+  position: relative;
+  margin-left: 40px;
+  margin-top: 10px;
+  margin-right: 5px;
+  border: 0;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: 900;
+  display: none;
+  font-size: 12px;
+  font-weight: normal;
+  z-index: 9999;
+}

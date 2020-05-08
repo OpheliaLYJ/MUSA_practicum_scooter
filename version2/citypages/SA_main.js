@@ -1,6 +1,6 @@
 var map = L.map('map', {
-  center: JScenter,
-  zoom: 10
+  center: SAcenter,
+  zoom: 11
 });
 
 var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
