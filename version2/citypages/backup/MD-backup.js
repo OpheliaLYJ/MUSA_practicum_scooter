@@ -29,7 +29,6 @@ var ctx = document.getElementById('myChart').getContext('2d')
 var selected
 var rest
 var scatterChart
-var city_data = PHTract;
 
 var slides = [
   //morning trips
@@ -58,7 +57,7 @@ var loadSlide = function() {
   // $('#description').text(slide.description);
    //map.setView(DCcenter, 13);
   $(document).ready(function() {
-    $.ajax(city_data).done(function(data) {
+    $.ajax(MDTract).done(function(data) {
       var parsedData = JSON.parse(data);
 
       var x_var = _.map(parsedData.features, function(eachFeature) {return eachFeature.properties[var_display]})
@@ -183,7 +182,6 @@ document.getElementById("selectVar").onchange = function () {
   //       currentSlide = i;
         removeTracts();
         loadSlide();
-        resetApplication();
 //  };};
 }
 

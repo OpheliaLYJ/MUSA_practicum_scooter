@@ -15,35 +15,35 @@
         <a href="../navigation.html" class = "nav nav-pills pull-right" role = "button" aria-expanded aria-haspopup = "true">HOME</a>
         <div class = "nav nav-pills pull-right dropdown" role = "button" aria-expanded aria-haspopup = "true">Change Your City
           <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+
+<!-- Update dropdown style for the selected city here -->
+            <a href="./Asheville.html">Asheville</a>
+            <a href="./Hartford.html">Hartford</a>
+            <a href="./Houston.html">Houston</a>
+            <a href="./Jacksonville.html">Jacksonville</a>
+            <a href="./JerseyCity.html">Jersey City</a>
+            <a href="./Madison.html" style = "background-color: #ddd">Madison</a>
+            <a href="./Omaha.html">Omaha</a>
+            <a href="./Philly.html">Philadelphia</a>
+            <a href="./SanAntonio.html">San Antonio</a>
+            <a href="./Syracuse.html">Syracuse</a>
           </div>
         </div>
+        <a class = "nav nav-pills pull-right" role = "button" aria-expanded aria-haspopup = "true" id = "button-guide">How to use this tool?</a>
         <a ui-sref = "charts" href = "#!/">
-          <div id = "logo"></div>
           <h4>Scooter Tomorrow</h4>
         </a>
    </headroom>
   <div id = "sidebar">
 
-    <!-- <p id = "city_dropdown"> Select a city </p>
-    <select id = "selectCity">
-          <option value = "AU">Austin</option>
-          <option value = "CH">Chicago</option>
-          <option value = "DC">Washington D.C.</option>
-          <option value = "KC">Kansas City</option>
-          <option value = "LV">Louisville</option>
-          <option value = "MNP">Minneapolis</option>
-    </select> -->
+<!-- Change city name here: -->
+    <h1 id="title"><span style = "font-size:30px">Madison</span>
+    <span style = "font-size: 14px; font-weight: bold; color:rgb(252,197,192); margin-left:30px;">Equity Score: </span><span id = "equity_score">60</span>
+      <button id="button-equity">?</button></h1>
 
-    <h1 id="title">Predicted scooter demand at census tract level, Madison</h1>
-    <!-- <p id="description">Description1</p> -->
-    <!-- <button id="lastButton">PREVIOUS</button>
-    <button id="nextButton">NEXT</button>  -->
-    <p id = "var_dropdown"> Select a variable to display </p>
+    <p id = "var_dropdown">Select scooter trip predictions or features to display:</p>
     <select id = "selectVar">
-      <option value = "PREDICTED.CNT">Predicted scooter trips count</option>
+      <option value = "PREDICTED.CNT">Predicted scooter trips</option>
       <option value = "TOTPOP">Population</option>
       <option value = "PCOM30PLUS">% of resident commuting 30+ minutes</option>
       <option value = "PDRIVE">% of resident driving to work</option>
@@ -56,19 +56,18 @@
       <option value = "PWHITE">% of white resident</option>
     </select>
     <div class = "var-summary">
-      <div>
-      <h4 id = "tb-title">City Overview</h4>
-      <button id="button-reset">Reset Table</button>
-      </div>
+      <p id = "tb-title">City Overview</p>
+      <button id="button-reset">Reset Table&Plot</button>
       <table class = "sidebar-table">
         <thead class = "thead-inverse">
           <tr>
-            <th style = "width: 180px">Feature</th>
-            <th style = "width: 80px">Value</th>
-            <th style = "width: 20px" id = "tb-pct"></th>
+            <th style = "width: 180px; color: rgb(252,197,192)">Feature</th>
+            <th style = "width: 80px; color: rgb(252,197,192)">Value</th>
+            <th style = "width: 20px; color: rgb(252,197,192)" id = "tb-pct"></th>
           </tr>
         </thead>
         <tbody>
+<!-- Change city attributes here -->
           <tr><td>Total population: </td><td id = "tb-pop">258000</td><td id = "tb-tile-pop"></td></tr>
           <tr><td>Predicted scooter trips: </td><td id = "tb-pred">327000</td><td id = "tb-tile-pred"></td></tr>
           <tr><td>White resident: </td><td id = "tb-white">87%</td><td id = "tb-tile-white"></td></tr>
@@ -77,28 +76,37 @@
           <tr><td>Median Housing Value: </td><td id = "tb-mdvalue">$167700</td><td id = "tb-tile-mdvalue"></td></tr>
         </tbody>
       </table>
-      <!-- <h5>
-        Total population: <span id="var-value">258,000</span>
-        <br>
-        Total predicted scooter trips: <span id="var-value">327,000</span>
-        <br>
-        Median household income: <span id="var-value">$54K</span>
-        <br>
-        Total jobs: <span id="var-value">303,000</span>
-        <br>
-        Percentage of white resident: <span id="var-value">87%</span>
-      </h5> -->
     </div>
     <div class = "equity">
-    <h4>Equity Score: <span id = "equity_score">60</span></h4>
+
+<!-- Change equity score here: -->
+    <p><span style = "font-size: 13px">Relationship between scooter trips and the selected variable. </span></p>
   </div>
 
     <canvas id="myChart" width = "320" height = "260"></canvas>
   </div>
   <div id = "map">
-    <!-- <h4 class = "info" ></h4> -->
+  <!-- The Guide Modal -->
+<div id="guide-Modal" class="modal" style = "background-color: rgba(0,0,0,0.4);">
+  <!-- Guide Modal content -->
+  <div class="modal-guide">
+    <span class="close" id = "close-guide">&times;</span>
+    <p style = "color: black; font-size: 16px; font-weight: bold;">A quick tutorial of this planning tool</span></p>
+    <p style = "color: black; font-size: 14px;">some explainations over here</p>
+</div>
+</div>
 
   </div>
+
+  <!-- The Equity Modal -->
+  <div id="equity-Modal" class="modal">
+<!-- Update Equity Modal content here:-->
+    <div class="modal-equity">
+      <!-- <span class="close" id = "close-equity">&times;</span> -->
+      <p style = "color: black; font-size: 16px; font-weight: bold;">What is <span style = "color:rgb(197,27,138)">Equity Score?</span></p>
+      <p style = "color: black; font-size: 14px;">some explainations over here</p>
+</div>
+</div>
 
     <!-- Javascript Imports -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
@@ -115,15 +123,16 @@
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/angular.headroom.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
+<!-- Change city source code here: -->
     <script src="Madison.js"></script>
     <script src="../js/moment.min.js"></script>
     <script src="../js/moment-with-locales.min.js"></script>
     <script src="../js/leaflet.js"></script>
     <script src="../Functions.js"></script>
-    <script src="MD_main.js"></script>
     <script src="../js/classyBrew.js"></script>
     <script src="../js/colorbrewer.js"></script>
     <script src="../js/colorbrewer_schemes.js"></script>
+    <script src="MD_main.js"></script>
 
   </body>
 </html>

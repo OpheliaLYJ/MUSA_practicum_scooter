@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+ integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+ crossorigin=""/>
+  </head>
+  <body>
+      <headroom head-room-reset class = "header ng-scope ng-isolate-scope
+      headroom headroom--not-bottom headroom--pinned headroom--top" offset = "120">
+        <a href="../navigation.html" class = "nav nav-pills pull-right" role = "button" aria-expanded aria-haspopup = "true">HOME</a>
+        <div class = "nav nav-pills pull-right dropdown" role = "button" aria-expanded aria-haspopup = "true">Change Your City
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+        <a ui-sref = "charts" href = "#!/">
+          <div id = "logo"></div>
+          <h4>Scooter Tomorrow</h4>
+        </a>
+   </headroom>
+  <div id = "sidebar">
+
+    <!-- <p id = "city_dropdown"> Select a city </p>
+    <select id = "selectCity">
+          <option value = "AU">Austin</option>
+          <option value = "CH">Chicago</option>
+          <option value = "DC">Washington D.C.</option>
+          <option value = "KC">Kansas City</option>
+          <option value = "LV">Louisville</option>
+          <option value = "MNP">Minneapolis</option>
+    </select> -->
+
+    <h1 id="title">Predicted scooter trip origins in each census tract, Philadelphia</h1>
+    <!-- <p id="description">Description1</p> -->
+    <!-- <button id="lastButton">PREVIOUS</button>
+    <button id="nextButton">NEXT</button>  -->
+    <p id = "var_dropdown"> Select a variable to display </p>
+    <select id = "selectVar">
+      <option value = "PREDICTED.CNT">Predicted scooter trips count</option>
+      <option value = "PCOM30PLUS">% of resident commuting 30+ minutes</option>
+      <option value = "PDRIVE">% of resident driving to work</option>
+      <option value = "PTRANS">% of resident taking public transit to work</option>
+      <option value = "JOBS_IN_TRACT">Number of jobs</option>
+      <option value = "MDHHINC">Median household income</option>
+      <option value = "MEDRENT">Median rent</option>
+      <option value = "MEDVALUE">Median housing value</option>
+      <option value = "TOTHSEUNI">Total housing units</option>
+      <option value = "PWHITE">% of white resident</option>
+    </select>
+
+    <div class = "var-summary">
+      <h5>
+        Total population: <span id="var-value">1.5 Million</span>
+        <br>
+        Total predicted scooter trips: <span id="var-value"> 63,000</span>
+        <br>
+        Median household income: <span id="var-value">$46000</span>
+        <br>
+        Total jobs: <span id="var-value">563,000</span>
+        <br>
+        Percentage of white resident: <span id="var-value">45%</span>
+      </h5>
+    </div>
+
+    <div id="myChart" style = "width:200px;height:250px;"></div>
+  </div>
+  <div id = "map">
+    <h4 class = "info" ></h4>
+
+
+  </div>
+
+    <!-- Javascript Imports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    <script src= "https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/angular.headroom.min.js"></script>
+
+    <script src="Philly.js"></script>
+    <script src="../js/moment.min.js"></script>
+    <script src="../js/moment-with-locales.min.js"></script>
+    <script src="../js/leaflet.js"></script>
+    <script src="../Functions.js"></script>
+    <script src="../js/classyBrew.js"></script>
+    <script src="../js/colorbrewer.js"></script>
+    <script src="../js/colorbrewer_schemes.js"></script>
+    <script src="PH_main.js"></script>
+
+  </body>
+</html>

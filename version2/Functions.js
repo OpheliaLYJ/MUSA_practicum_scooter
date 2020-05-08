@@ -96,6 +96,24 @@ var resetApplication = function() {
   $('#tb-mdinc').text(city_mdinc)
   $('#tb-mdvalue').text(city_mdvalue)
   $('#button-reset').hide();
+  selected = {}
+  rest = _.filter(mapped, function(each) {
+    if (selected) {
+      return each.x !== selected.x || each.y !== selected.y
+    }
+    else {return true}
+  })
+  scatterChart.data.datasets = [{
+      label:"No census tract selected",
+      backgroundColor: 'rgb(197,27,138)',
+      data: [selected]
+  },{
+      label: "Data",
+      backgroundColor: 'rgb(252,197,192)',
+      data: rest
+  }]
+
+  scatterChart.update({duration:0})
 }
 
 $('#button-reset').click(resetApplication);
@@ -114,10 +132,10 @@ function updateTable(e) {
 
   $('#tb-tile-pop').text(e.target.feature.properties["TILE_POP"])
   $('#tb-tile-pred').text(e.target.feature.properties["TILE_PRED"])
-  $('#tb-tile-white').text(e.target.feature.properties["TILE_WHITE"]))
+  $('#tb-tile-white').text(e.target.feature.properties["TILE_WHITE"])
   $('#tb-tile-jobs').text(e.target.feature.properties["TILE_JOBS"])
-  $('#tb-tile-mdinc').text('$' + e.target.feature.properties["TILE_INC"])
-  $('#tb-tile-mdvalue').text('$' + e.target.feature.properties["TILE_VALUE"])
+  $('#tb-tile-mdinc').text(e.target.feature.properties["TILE_INC"])
+  $('#tb-tile-mdvalue').text(e.target.feature.properties["TILE_VALUE"])
 
   selected = {x: e.target.feature.properties[var_display], y: e.target.feature.properties["PREDICTED.CNT"]}
   rest = _.filter(mapped, function(each) {
@@ -210,7 +228,11 @@ function create_chart(selected, rest) {
                   type: 'linear',
                   position: 'bottom',
                   ticks: {
-                    fontColor: "white"}
+                    fontColor: "white"},
+                  scaleLabel: {
+                    display: true,
+                    labelString: $("#selectVar option:selected").text(),
+                    fontColor:"white"}
               }],
               yAxes:[{
                   gridLines: {
@@ -221,10 +243,14 @@ function create_chart(selected, rest) {
                     color: "rgb(170, 170, 170)"},
                   type: 'linear',
                   ticks: {
-                    max: 45000,
+  /*                  max: 45000,
                     min: 0,
-                    stepSize: 5000,
+                    stepSize: 5000, */
                     fontColor: "white"},
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Predicted scooter trips',
+                    fontColor:"white"}
               }]
 
           },
@@ -233,4 +259,37 @@ function create_chart(selected, rest) {
           }
       }
   });
+}
+
+// When the user clicks on the button, open the modal
+equityBtn.onclick = function() {
+  equityModal.style.display = "block";
+}
+/*
+equityBtn.onmouseout = function() {
+  equityModal.style.display = "none";
+} */
+
+
+guideBtn.onclick = function() {
+  guideModal.style.display = "block";
+}
+/*
+// When the user clicks on <span> (x), close the modal
+equitySpan.onclick = function() {
+  equityModal.style.display = "none";
+} */
+
+guideSpan.onclick = function() {
+  guideModal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == equityModal) {
+    equityModal.style.display = "none";
+  }
+  if (event.target == guideModal) {
+    guideModal.style.display = "none";
+  }
 }

@@ -183,7 +183,6 @@ document.getElementById("selectVar").onchange = function () {
   //       currentSlide = i;
         removeTracts();
         loadSlide();
-        resetApplication();
 //  };};
 }
 

@@ -29,7 +29,7 @@ var ctx = document.getElementById('myChart').getContext('2d')
 var selected
 var rest
 var scatterChart
-var city_data = PHTract;
+var city_data = MDTract;
 
 var slides = [
   //morning trips
@@ -183,7 +183,6 @@ document.getElementById("selectVar").onchange = function () {
   //       currentSlide = i;
         removeTracts();
         loadSlide();
-        resetApplication();
 //  };};
 }
 

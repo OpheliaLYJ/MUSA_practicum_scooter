@@ -1,4 +1,3 @@
-
 //Load & process JSON dataset
 var AUTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/AU_model_tract.GeoJSON";
 var CHTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/CH_model_tract.GeoJSON";
@@ -30,6 +29,7 @@ var ctx = document.getElementById('myChart').getContext('2d')
 var selected
 var rest
 var scatterChart
+var city_data = MDTract;
 
 var slides = [
   //morning trips
@@ -58,7 +58,7 @@ var loadSlide = function() {
   // $('#description').text(slide.description);
    //map.setView(DCcenter, 13);
   $(document).ready(function() {
-    $.ajax(MDTract).done(function(data) {
+    $.ajax(city_data).done(function(data) {
       var parsedData = JSON.parse(data);
 
       var x_var = _.map(parsedData.features, function(eachFeature) {return eachFeature.properties[var_display]})
@@ -143,19 +143,19 @@ var loadSlide = function() {
           labels = [];
 
       // loop through variable intervals and generate a label with a colored square for each interval
-      for (var i = 0; i < grades.length; i++) {
+      for (var i = 0; i < grades.length-1; i++) {
           if (var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT"
           || var_display == "MEDRENT" || var_display == "TOTHSEUNI"
           || var_display == "MEDVALUE" || var_display == "MDHHINC" || var_display == "TOTPOP") {
             div.innerHTML +=
             labels.push(
-                '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +
-                Math.round(grades[i]) + ((grades[i + 1]) ? '&ndash;' + Math.round(grades[i + 1]) : '+'));
+                '<i style="background:' + brew.getColorInRange(grades[i] + 1) + '"></i> ' +
+                Math.round(grades[i]) + '&ndash;' + Math.round(grades[i + 1]));
           } else {
             div.innerHTML +=
             labels.push(
-                '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +
-                (Math.round(grades[i] * 100) / 100).toFixed(2) + ((grades[i + 1]) ? '&ndash;' +(Math.round(grades[i+1] * 100) / 100).toFixed(2) : '+'));
+                '<i style="background:' + brew.getColorInRange(grades[i] + 0.1) + '"></i> ' +
+                (Math.round(grades[i] * 100) / 100).toFixed(2) + '&ndash;' +(Math.round(grades[i+1] * 100) / 100).toFixed(2));
       //      (Math.round(grades[i] * 100) / 100).toFixed(2);
        }
 
@@ -183,7 +183,18 @@ document.getElementById("selectVar").onchange = function () {
   //       currentSlide = i;
         removeTracts();
         loadSlide();
+        resetApplication();
 //  };};
 }
 
-//console.log(mapped)
+// Get the modal
+var equityModal = document.getElementById("equity-Modal");
+var guideModal = document.getElementById("guide-Modal");
+
+// Get the button that opens the modal
+var equityBtn = document.getElementById("button-equity");
+var guideBtn = document.getElementById("button-guide");
+
+// Get the <span> element that closes the modal
+var equitySpan = document.getElementById("close-equity");
+var guideSpan = document.getElementById("close-guide");
