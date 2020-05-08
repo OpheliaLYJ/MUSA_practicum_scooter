@@ -17,11 +17,11 @@
           <div class="dropdown-content">
 
 <!-- Update dropdown style for the selected city here -->
-            <a href="./Asheville.html" style = "background-color: #ddd">Asheville</a>
+            <a href="./Asheville.html">Asheville</a>
             <a href="./Hartford.html">Hartford</a>
             <a href="./Houston.html">Houston</a>
             <a href="./Jacksonville.html">Jacksonville</a>
-            <a href="./JerseyCity.html">Jersey City</a>
+            <a href="./JerseyCity.html" style = "background-color: #ddd">Jersey City</a>
             <a href="./Madison.html">Madison</a>
             <a href="./Omaha.html">Omaha</a>
             <a href="./Philly.html">Philadelphia</a>
@@ -37,8 +37,8 @@
   <div id = "sidebar">
 
 <!-- Change city name here: -->
-    <h1 id="title"><span style = "font-size:30px">Asheville</span>
-    <span style = "font-size: 14px; font-weight: bold; color:rgb(252,197,192); margin-left:30px;">Equity Score: </span><span id = "equity_score">60</span>
+    <h1 id="title"><span style = "font-size:30px">Jersey City</span>
+    <span style = "font-size: 14px; font-weight: bold; color:rgb(252,197,192); margin-left:15px;">Equity Score: </span><span id = "equity_score">60</span>
       <button id="button-equity">?</button></h1>
 
     <p id = "var_dropdown">Select scooter trip predictions or features to display:</p>
@@ -77,6 +77,7 @@
         </tbody>
       </table>
     </div>
+
     <div class = "equity">
 
 <!-- Change equity score here: -->
@@ -122,17 +123,18 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/angular.headroom.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
 
 <!-- Change city source code here: -->
-    <script src="Asheville.js"></script>
+    <script src="JerseyCity.js"></script>
     <script src="../js/moment.min.js"></script>
     <script src="../js/moment-with-locales.min.js"></script>
     <script src="../js/leaflet.js"></script>
     <script src="../Functions.js"></script>
-    <script src="../js/classybrew.js"></script>
+    <script src="../js/classyBrew.js"></script>
     <script src="../js/colorbrewer.js"></script>
     <script src="../js/colorbrewer_schemes.js"></script>
-    <script src="AV_main.js"></script>
+    <script src="JC_main.js"></script>
 
   </body>
 </html>
