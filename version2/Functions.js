@@ -95,6 +95,14 @@ var resetApplication = function() {
   $('#tb-jobs').text(city_jobs)
   $('#tb-mdinc').text(city_mdinc)
   $('#tb-mdvalue').text(city_mdvalue)
+
+  $('#tb-tile-pop').text("")
+  $('#tb-tile-pred').text("")
+  $('#tb-tile-white').text("")
+  $('#tb-tile-jobs').text("")
+  $('#tb-tile-mdinc').text("")
+  $('#tb-tile-mdvalue').text("")
+
   $('#button-reset').hide();
   selected = {}
   rest = _.filter(mapped, function(each) {

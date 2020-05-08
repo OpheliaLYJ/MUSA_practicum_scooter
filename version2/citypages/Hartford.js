@@ -7,6 +7,8 @@ var LVTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scoot
 var MNPTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/MNP_model_tract.GeoJSON";
 var PHTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/PH_model_tract.GeoJSON";
 var MDTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/MD_model_tract.GeoJSON";
+var HFTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/HF_model_tract.GeoJSON";
+
 
 var AUcenter = [30.268901, -97.757853];
 var CHcenter = [41.875709, -87.653920];
@@ -29,7 +31,7 @@ var ctx = document.getElementById('myChart').getContext('2d')
 var selected
 var rest
 var scatterChart
-var city_data = PHTract;
+var city_data = MDTract;
 
 var slides = [
   //morning trips

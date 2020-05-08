@@ -7,6 +7,7 @@ var LVTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scoot
 var MNPTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/MNP_model_tract.GeoJSON";
 var PHTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/PH_model_tract.GeoJSON";
 var MDTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/MD_model_tract.GeoJSON";
+var AVTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/AV_model_tract.GeoJSON";
 
 var AUcenter = [30.268901, -97.757853];
 var CHcenter = [41.875709, -87.653920];
@@ -16,6 +17,7 @@ var LVcenter = [38.232967, -85.751524];
 var MNPcenter = [44.975745, -93.262489];
 var PHcenter = [39.995668, -75.137520];
 var MDcenter = [43.095655, -89.410670];
+var AVcenter = [35.61320904052448, -82.53032684326172];
 
 var values;
 var brew;
@@ -29,28 +31,7 @@ var ctx = document.getElementById('myChart').getContext('2d')
 var selected
 var rest
 var scatterChart
-var city_data = PHTract;
-
-var slides = [
-  //morning trips
-  { title: "Scooter trip origins in each census tract, Austin, July - September, 2019", description: "Description1",
-  city: 'AU', color: "#fed352", zoom: 13, center: AUcenter, data: AUTract, divide: 5000},
-  //morning trips
-  { title: "Scooter trip origins in each census tract, Chicago, July - September, 2019", description: "Description2",
-  city: 'CH', color: "#e46c4d", zoom: 13, center: CHcenter, data: CHTract, divide: 1000},
-  //afternoon trips
-  { title: "Scooter trip origins in each census tract, Washington D.C., July - September, 2019", description: "Description3",
-  city: 'DC', color: "#02bbca", zoom: 13, center: DCcenter, data: DCTract, divide: 3000},
-  //afternoon trips
-  { title: "Scooter trip origins in each census tract, Kansas City, July - September, 2019", description: "Description4",
-  city: 'KC', color: "#175a94", zoom: 13, center: KCcenter, data: KCTract, divide: 3000},
-  //long trips (longer than 1.5mile)
-  { title: "Scooter trip origins in each census tract, Louisville, July - September, 2019", description: "Description5",
-  city: 'LV', color: "#99d45d", zoom: 13, center: LVcenter, data: LVTract, divide: 5000},
-  //long trips (longer than 30 minutes)
-  { title: "Scooter trip origins in each census tract, Minneapolis, July - September, 2019", description: "Description6",
-  city: 'MNP', color: "#9979c1", zoom: 13, center: MNPcenter, data: MNPTract, divide: 1000}
-];
+var city_data = AVTract;
 
 var loadSlide = function() {
   // console.log("this city is " + city)

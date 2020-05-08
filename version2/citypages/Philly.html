@@ -37,7 +37,9 @@
   <div id = "sidebar">
 
 <!-- Change city name here: -->
-    <h1 id="title"><span style = "font-size:30px">Philadelphia</span></h1>
+    <h1 id="title"><span style = "font-size:30px">Philadelphia</span>
+    <span style = "font-size: 14px; font-weight: bold; color:rgb(252,197,192); margin-left:15px;">Equity Score: </span><span id = "equity_score">60</span>
+      <button id="button-equity">?</button></h1>
 
     <p id = "var_dropdown">Select scooter trip predictions or features to display:</p>
     <select id = "selectVar">
@@ -78,24 +80,14 @@
     <div class = "equity">
 
 <!-- Change equity score here: -->
-    <p> <span style = "font-size: 14px; font-weight: bold; color:rgb(252,197,192)">Equity Score: </span><span id = "equity_score">60</span>
-      <button id="button-equity">What is this?</button>
-    <br> <span style = "font-size: 13px">Relationship between scooter trips and the selected variable. </span></p>
+    <p><span style = "font-size: 13px">Relationship between scooter trips and the selected variable. </span></p>
   </div>
 
     <canvas id="myChart" width = "320" height = "260"></canvas>
   </div>
   <div id = "map">
-    <!-- The Equity Modal -->
-    <div id="equity-Modal" class="modal">
-<!-- Update Equity Modal content here:-->
-      <div class="modal-equity">
-        <span class="close" id = "close-equity">&times;</span>
-        <p style = "color: black; font-size: 16px; font-weight: bold;">What is <span style = "color:rgb(197,27,138)">Equity Score?</span></p>
-        <p style = "color: black; font-size: 14px;">some explainations over here</p>
-  </div>
-</div>
-<div id="guide-Modal" class="modal">
+  <!-- The Guide Modal -->
+<div id="guide-Modal" class="modal" style = "background-color: rgba(0,0,0,0.4);">
   <!-- Guide Modal content -->
   <div class="modal-guide">
     <span class="close" id = "close-guide">&times;</span>
@@ -105,6 +97,16 @@
 </div>
 
   </div>
+
+  <!-- The Equity Modal -->
+  <div id="equity-Modal" class="modal">
+<!-- Update Equity Modal content here:-->
+    <div class="modal-equity">
+      <!-- <span class="close" id = "close-equity">&times;</span> -->
+      <p style = "color: black; font-size: 16px; font-weight: bold;">What is <span style = "color:rgb(197,27,138)">Equity Score?</span></p>
+      <p style = "color: black; font-size: 14px;">some explainations over here</p>
+</div>
+</div>
 
     <!-- Javascript Imports -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
