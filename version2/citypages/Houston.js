@@ -8,6 +8,7 @@ var MNPTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scoo
 var PHTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/PH_model_tract.GeoJSON";
 var MDTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/MD_model_tract.GeoJSON";
 var HFTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/HF_model_tract.GeoJSON";
+var HSTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/HS_model_tract.GeoJSON";
 
 
 var AUcenter = [30.268901, -97.757853];
@@ -18,7 +19,8 @@ var LVcenter = [38.232967, -85.751524];
 var MNPcenter = [44.975745, -93.262489];
 var PHcenter = [39.995668, -75.137520];
 var MDcenter = [43.095655, -89.410670];
-var HFcenter = [41.77233588526917, -72.68400192260742]
+var HFcenter = [41.77233588526917, -72.68400192260742];
+var HScenter = [41.77233588526917, -72.68400192260742];
 
 var values;
 var brew;
@@ -32,7 +34,7 @@ var ctx = document.getElementById('myChart').getContext('2d')
 var selected
 var rest
 var scatterChart
-var city_data = HFTract;
+var city_data = HSTract;
 
 var loadSlide = function() {
   // console.log("this city is " + city)
