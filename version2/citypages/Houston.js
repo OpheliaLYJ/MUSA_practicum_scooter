@@ -9,6 +9,12 @@ var PHTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scoot
 var MDTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/MD_model_tract.GeoJSON";
 var HFTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/HF_model_tract.GeoJSON";
 var HSTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/HS_model_tract.GeoJSON";
+var HSTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/HS_model_tract.GeoJSON";
+var JSTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/JS_model_tract.GeoJSON";
+var JCTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/JC_model_tract.GeoJSON";
+var OMTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/OM_model_tract.GeoJSON";
+//var SATract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/SA_model_tract.GeoJSON";
+var SYTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/SY_model_tract.GeoJSON";
 
 
 var AUcenter = [30.268901, -97.757853];
@@ -20,7 +26,7 @@ var MNPcenter = [44.975745, -93.262489];
 var PHcenter = [39.995668, -75.137520];
 var MDcenter = [43.095655, -89.410670];
 var HFcenter = [41.77233588526917, -72.68400192260742];
-var HScenter = [41.77233588526917, -72.68400192260742];
+var HScenter = [29.8382614512946, -95.36064147949217];
 
 var values;
 var brew;
