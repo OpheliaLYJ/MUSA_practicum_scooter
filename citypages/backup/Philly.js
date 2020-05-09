@@ -31,6 +31,11 @@ var rest
 var scatterChart
 var city_data = PHTract;
 
+var resetMap = function(){
+  map.setView(PHcenter, 10);
+  $('#button-resetMap').hide();
+}
+
 var slides = [
   //morning trips
   { title: "Scooter trip origins in each census tract, Austin, July - September, 2019", description: "Description1",
@@ -143,19 +148,19 @@ var loadSlide = function() {
           labels = [];
 
       // loop through variable intervals and generate a label with a colored square for each interval
-      for (var i = 0; i < grades.length; i++) {
+      for (var i = 0; i < grades.length-1; i++) {
           if (var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT"
           || var_display == "MEDRENT" || var_display == "TOTHSEUNI"
           || var_display == "MEDVALUE" || var_display == "MDHHINC" || var_display == "TOTPOP") {
             div.innerHTML +=
             labels.push(
-                '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +
-                Math.round(grades[i]) + ((grades[i + 1]) ? '&ndash;' + Math.round(grades[i + 1]) : '+'));
+                '<i style="background:' + brew.getColorInRange(grades[i] + 1) + '"></i> ' +
+                Math.round(grades[i]) + '&ndash;' + Math.round(grades[i + 1]));
           } else {
             div.innerHTML +=
             labels.push(
-                '<i style="background:' + brew.getColorInRange(grades[i]) + '"></i> ' +
-                (Math.round(grades[i] * 100) / 100).toFixed(2) + ((grades[i + 1]) ? '&ndash;' +(Math.round(grades[i+1] * 100) / 100).toFixed(2) : '+'));
+                '<i style="background:' + brew.getColorInRange(grades[i] + 0.1) + '"></i> ' +
+                (Math.round(grades[i] * 100) / 100).toFixed(2) + '&ndash;' +(Math.round(grades[i+1] * 100) / 100).toFixed(2));
       //      (Math.round(grades[i] * 100) / 100).toFixed(2);
        }
 
@@ -183,6 +188,7 @@ document.getElementById("selectVar").onchange = function () {
   //       currentSlide = i;
         removeTracts();
         loadSlide();
+        resetApplication();
 //  };};
 }
 

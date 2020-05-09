@@ -3,12 +3,12 @@ var map = L.map('map', {
   zoom: 10
 });
 
-var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
-  attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  subdomains: 'abcd',
+var mapbox_base = L.tileLayer('https://api.mapbox.com/styles/v1/opheliaaa/ck9ylje8o0x5z1ipfpgpbji5p/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib3BoZWxpYWFhIiwiYSI6ImNrOHVsaWs3NDBjOTUzbXBheW9zY2wybmMifQ.J8OQVcuUxnoTI9gvkisyeQ', {
+//  attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+//  subdomains: 'abcd',
   minZoom: 0,
   maxZoom: 20,
-  ext: 'png'
+//  ext: 'png'
 }).addTo(map);
 
 var featureGroup;

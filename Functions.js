@@ -21,7 +21,7 @@ function highlightFeature(e) {
         weight: 5,
         color: 'red',
         dashArray: '',
-        fillOpacity: 0.1
+        fillOpacity: 0.2
     });
 
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -38,14 +38,10 @@ function resetHighlight(e) {
 function zoomToFeature(e) {
   $('#button-resetMap').show();
 //  console.log(e.target.getBounds()._northEast, e.target.getBounds()._southWest);
-  map.fitBounds(e.target.getBounds().pad(Math.sqrt(2) / 4));
+  map.fitBounds(e.target.getBounds().pad(Math.sqrt(2) / 8));
 
 }
 
-function changeOpacity(e) {
-  console.log(e.layer.options)
-//  return e.layer.options.fillOpacity = 0.4;
-}
 
 var city_pop = $('#tb-pop').text()
 var city_pred = $('#tb-pred').text()
@@ -143,25 +139,6 @@ function onEachFeature(feature, layer) {
           zoomToFeature(event)
         }
     })
-
-/*
-    var popupStyle = {
-        'maxWidth': '400',
-        'className' : 'custom'
-        }
-
-    var popupContent = '<table class = table>'+ '<thead class = thead><tr><td>Census Tract Overview</td></tr></thead>'+ '<tbody>'
-    + '<tr><td>Predicted scooter trips count: </td>' + '<td>' + feature.properties["PREDICTED.CNT"] + '</td></tr>'
-    + '<tr><td>Number of jobs: </td>'  + '<td>' + feature.properties.JOBS_IN_TRACT + '</td></tr>'
-    + '<tr><td>White resident: </td>'  + '<td>' + (Math.round(feature.properties.PWHITE * 100) / 100).toFixed(2) + '%'+ '</td></tr>'
-    + '</tbody> </table>'
-
-  //   '<p>'+"Predicted scooter trips count: " + feature.properties["PREDICTED.CNT"]
-  // + '<br>' + "Number of jobs: " + feature.properties.JOBS_IN_TRACT
-  // + '<br>' + "Percentage of white resident: " + (Math.round(feature.properties.PWHITE * 100) / 100).toFixed(2)
-  // + '</p>';
-
-    layer.bindPopup(popupContent, popupStyle); */
 };
 
 function brewStyle(feature) {

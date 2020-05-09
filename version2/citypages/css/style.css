@@ -501,7 +501,7 @@ h1 {
 }
 
 #button-resetMap {
-  background-color: rgb(197,27,138);
+  background-color: #c51b8a;
   position: relative;
   margin-left: 40px;
   margin-top: 10px;
@@ -511,7 +511,7 @@ h1 {
   color: #fff;
   font-weight: 900;
   display: none;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: normal;
   z-index: 9999;
 }

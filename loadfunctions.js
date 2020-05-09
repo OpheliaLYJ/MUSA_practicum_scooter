@@ -1,4 +1,5 @@
 //Load & process JSON dataset
+//Load & process JSON dataset
 var AUTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/AU_model_tract.GeoJSON";
 var CHTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/CH_model_tract.GeoJSON";
 var DCTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/DC_model_tract.GeoJSON";
@@ -7,6 +8,15 @@ var LVTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scoot
 var MNPTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/MNP_model_tract.GeoJSON";
 var PHTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/PH_model_tract.GeoJSON";
 var MDTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/MD_model_tract.GeoJSON";
+var HFTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/HF_model_tract.GeoJSON";
+var HSTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/HS_model_tract.GeoJSON";
+var HSTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/HS_model_tract.GeoJSON";
+var JVTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/JV_model_tract.GeoJSON";
+var JCTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/JC_model_tract.GeoJSON";
+var OMTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/OM_model_tract.GeoJSON";
+var SATract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/SA_model_tract.GeoJSON";
+var SYTract = "https://raw.githubusercontent.com/OpheliaLYJ/MUSA_practicum_scooter/master/data/SY_model_tract.GeoJSON";
+
 
 var AUcenter = [30.268901, -97.757853];
 var CHcenter = [41.875709, -87.653920];
@@ -16,6 +26,12 @@ var LVcenter = [38.232967, -85.751524];
 var MNPcenter = [44.975745, -93.262489];
 var PHcenter = [39.995668, -75.137520];
 var MDcenter = [43.095655, -89.410670];
+var HFcenter = [41.77233588526917, -72.68400192260742];
+var HScenter = [29.8382614512946, -95.36064147949217];
+var JVcenter = [30.323100460201648, -81.62635803222656];
+var JCcenter = [40.73268976628568, -74.0669059753418];
+var OMcenter = [41.2824505509628, -96.16024017333984];
+var SYcenter = [43.01669737169671, -76.17851257324219];
 
 var values;
 var brew;
@@ -29,39 +45,21 @@ var ctx = document.getElementById('myChart').getContext('2d')
 var selected
 var rest
 var scatterChart
-var city_data = MDTract;
 
-var resetMap = function(){
-  map.setView(MDcenter, 10);
-  $('#button-resetMap').hide();
-}
+// Get the modal
+var equityModal = document.getElementById("equity-Modal");
+var guideModal = document.getElementById("guide-Modal");
 
-var slides = [
-  //morning trips
-  { title: "Scooter trip origins in each census tract, Austin, July - September, 2019", description: "Description1",
-  city: 'AU', color: "#fed352", zoom: 13, center: AUcenter, data: AUTract, divide: 5000},
-  //morning trips
-  { title: "Scooter trip origins in each census tract, Chicago, July - September, 2019", description: "Description2",
-  city: 'CH', color: "#e46c4d", zoom: 13, center: CHcenter, data: CHTract, divide: 1000},
-  //afternoon trips
-  { title: "Scooter trip origins in each census tract, Washington D.C., July - September, 2019", description: "Description3",
-  city: 'DC', color: "#02bbca", zoom: 13, center: DCcenter, data: DCTract, divide: 3000},
-  //afternoon trips
-  { title: "Scooter trip origins in each census tract, Kansas City, July - September, 2019", description: "Description4",
-  city: 'KC', color: "#175a94", zoom: 13, center: KCcenter, data: KCTract, divide: 3000},
-  //long trips (longer than 1.5mile)
-  { title: "Scooter trip origins in each census tract, Louisville, July - September, 2019", description: "Description5",
-  city: 'LV', color: "#99d45d", zoom: 13, center: LVcenter, data: LVTract, divide: 5000},
-  //long trips (longer than 30 minutes)
-  { title: "Scooter trip origins in each census tract, Minneapolis, July - September, 2019", description: "Description6",
-  city: 'MNP', color: "#9979c1", zoom: 13, center: MNPcenter, data: MNPTract, divide: 1000}
-];
+// Get the button that opens the modal
+var equityBtn = document.getElementById("button-equity");
+var guideBtn = document.getElementById("button-guide");
+
+// Get the <span> element that closes the modal
+var equitySpan = document.getElementById("close-equity");
+var guideSpan = document.getElementById("close-guide");
+
 
 var loadSlide = function() {
-  // console.log("this city is " + city)
-  // $('#title').text(slide.title);
-  // $('#description').text(slide.description);
-   //map.setView(DCcenter, 13);
   $(document).ready(function() {
     $.ajax(city_data).done(function(data) {
       var parsedData = JSON.parse(data);
@@ -113,7 +111,6 @@ var loadSlide = function() {
     }).addTo(map);
 
 
-
     //Add info control
     info.onAdd = function (map) {
         this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
@@ -125,12 +122,12 @@ var loadSlide = function() {
       if(var_display == "PREDICTED.CNT" || var_display == "JOBS_IN_TRACT"
       || var_display == "MEDRENT" || var_display == "TOTHSEUNI"
     || var_display == "MEDVALUE" || var_display == "MDHHINC" || var_display == "TOTPOP") {
-        this._div.innerHTML = '<h4>Value</h4>' +  (props ?
-            '<b>' + props.GEOID + '</b><br />' + Math.round(props[var_display])
+        this._div.innerHTML = '<h4>' + $("#selectVar option:selected").text() + '</h4>' +  (props ?
+            'Census Tract: ' + props.GEOID + '<br><b>Value: ' + Math.round(props[var_display]) + '</b>'
             : 'Hover over a census tract');
       } else {
-        this._div.innerHTML = '<h4>Value</h4>' +  (props ?
-            '<b>' + props.GEOID + '</b><br />' + (Math.round(props[var_display] * 100) / 100).toFixed(2)
+        this._div.innerHTML = '<h4>' + $("#selectVar option:selected").text() + '</h4>' +  (props ?
+            'Census Tract: ' + props.GEOID + '<br><b>Value: ' + (Math.round(props[var_display] * 100) / 100).toFixed(2) + '</b>'
             : 'Hover over a census tract');
       }
     };
@@ -172,35 +169,3 @@ var loadSlide = function() {
     });
   });
 };
-
-var_display = "PREDICTED.CNT"
-loadSlide()
-
-
-document.getElementById("selectVar").onchange = function () {
-  var_display = document.getElementById("selectVar").value;
-  selected = {}
-  console.log(var_display);
-  // for (var i = 0; i < slides.length; i++){
-  //     if (city != slides[i].city) continue;
-  //     else {
-  //       console.log("found " + i)
-  //       currentSlide = i;
-        removeTracts();
-        loadSlide();
-        resetApplication();
-        resetMap();
-//  };};
-}
-
-// Get the modal
-var equityModal = document.getElementById("equity-Modal");
-var guideModal = document.getElementById("guide-Modal");
-
-// Get the button that opens the modal
-var equityBtn = document.getElementById("button-equity");
-var guideBtn = document.getElementById("button-guide");
-
-// Get the <span> element that closes the modal
-var equitySpan = document.getElementById("close-equity");
-var guideSpan = document.getElementById("close-guide");
