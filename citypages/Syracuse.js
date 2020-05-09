@@ -1,7 +1,7 @@
 var city_data = SYTract;
 
 var resetMap = function(){
-  map.setView(SYcenter, 10);
+  map.setView(SYcenter, 12);
   $('#button-resetMap').hide();
 }
 

@@ -1,7 +1,7 @@
 var city_data = MDTract;
 
 var resetMap = function(){
-  map.setView(MDcenter, 10);
+  map.setView(MDcenter, 11);
   $('#button-resetMap').hide();
 }
 

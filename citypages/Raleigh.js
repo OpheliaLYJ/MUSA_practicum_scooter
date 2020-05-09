@@ -1,7 +1,7 @@
 var city_data = RLTract;
 
 var resetMap = function(){
-  map.setView(RLcenter, 10);
+  map.setView(RLcenter, 11);
   $('#button-resetMap').hide();
 }
 
