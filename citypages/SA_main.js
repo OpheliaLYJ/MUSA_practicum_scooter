@@ -1,6 +1,6 @@
 var map = L.map('map', {
   center: SAcenter,
-  zoom: 11
+  zoom: 10
 });
 
 var mapbox_base = L.tileLayer('https://api.mapbox.com/styles/v1/opheliaaa/ck9ylje8o0x5z1ipfpgpbji5p/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib3BoZWxpYWFhIiwiYSI6ImNrOHVsaWs3NDBjOTUzbXBheW9zY2wybmMifQ.J8OQVcuUxnoTI9gvkisyeQ', {

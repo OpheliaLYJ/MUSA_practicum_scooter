@@ -1,7 +1,7 @@
 var city_data = AVTract;
 
 var resetMap = function(){
-  map.setView(AVcenter, 10);
+  map.setView(AVcenter, 11);
   $('#button-resetMap').hide();
 }
 

@@ -1,7 +1,7 @@
 var city_data = SATract;
 
 var resetMap = function(){
-  map.setView(SAcenter, 12);
+  map.setView(SAcenter, 10);
   $('#button-resetMap').hide();
 }
 
