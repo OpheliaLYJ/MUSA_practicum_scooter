@@ -38,9 +38,10 @@
 
 <!-- Change city name here: -->
     <h1 id="title"><span style = "font-size:30px">Madison</span>
-    <span style = "font-size: 14px; font-weight: bold; color:rgb(252,197,192); margin-left:40px;">Equity Score: </span><span id = "equity_score">60</span>
+    <span style = "font-size: 14px; font-weight: bold; color:rgb(252,197,192); margin-left:60px;">Equity Score: </span><span id = "equity_score">60</span>
       <button id="button-equity">?</button></h1>
 
+    <div class = "sidebar-container">
     <p id = "var_dropdown">Select scooter trip predictions or features to display:</p>
     <select id = "selectVar">
       <option value = "PREDICTED.CNT">Predicted scooter trips</option>
@@ -55,14 +56,18 @@
       <option value = "TOTHSEUNI">Total housing units</option>
       <option value = "PWHITE">% of white resident</option>
     </select>
+  </div>
+  <br>
+
+  <div class = "sidebar-container">
     <div class = "var-summary">
       <p id = "tb-title">City Overview</p>
       <button id="button-reset">Reset Table&Plot</button>
       <table class = "sidebar-table">
         <thead class = "thead-inverse">
           <tr>
-            <th style = "width: 180px; color: rgb(252,197,192)">Feature</th>
-            <th style = "width: 80px; color: rgb(252,197,192)">Value</th>
+            <th style = "width: 190px; color: rgb(252,197,192)">Feature</th>
+            <th style = "width: 70px; color: rgb(252,197,192)">Value</th>
             <th style = "width: 20px; color: rgb(252,197,192)" id = "tb-pct"></th>
           </tr>
         </thead>
@@ -77,7 +82,10 @@
         </tbody>
       </table>
     </div>
+  </div>
+    <br>
 
+    <div class = "sidebar-container">
     <div class = "equity">
 
 <!-- Change equity score here: -->
@@ -85,6 +93,7 @@
   </div>
 
     <canvas id="myChart" width = "320" height = "260"></canvas>
+  </div>
   </div>
   <div id = "map">
   <button id="button-resetMap">Reset Zoom</button>
