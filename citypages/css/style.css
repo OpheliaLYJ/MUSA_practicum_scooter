@@ -10,18 +10,19 @@ p.main {
 
 #sidebar {
   position: absolute;
-  width: 30%;
+  width: 410px;
   height: 93%;
   top: 60px;
   left: 0;
   /* background-color: #B7A9A1; */
   background-color: #287D8EFF;
   opacity: 0.6;
+  z-index: 9999;
 }
 
 #map {
   position: absolute;
-  width: 70%;
+  left:410px;
   height: 92%;
   top: 60px;
   right: 0;
@@ -391,7 +392,7 @@ h1 {
 #button-reset {
   background-color: #c51b8a;
   position: relative;
-  margin-left: 20px;
+  margin-left: 50px;
   margin-right: 5px;
   border: 0;
   border-radius: 3px;
@@ -424,7 +425,7 @@ p {
 }
 
 #equity_score{
-  font-size: 30px;
+  font-size: 40px;
   color: rgb(252,197,192); /*#FDE725FF; /**/
   font-weight: bold;
 }
@@ -467,23 +468,24 @@ p {
 
 /* Modal Content/Box */
 .modal-equity {
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(256,256,256, 0.9);
   padding: 5px;
-  margin-top: 6%; /* 10% from the top and centered */
-  margin-left: 29.5%;
+  margin-top: 65px; /* 10% from the top and centered */
+  margin-left: 415px;
 /*  border: 1px solid #333; */
-  border-radius:5px;
-  width: 35%; /* Could be more or less, depending on screen size */
+  border-radius:4px;
+  width: 400px; /* Could be more or less, depending on screen size */
+  height: 200px;
 }
 
 #equity-Modal::after {
   content: " ";
   position:absolute;
-  top: 11%;  /* At the top of the tooltip */
-  left: 27%;
-  border-width: 15px;
+  top: 95px;;  /* At the top of the tooltip */
+  left: 380px;
+  border-width: 20px;
   border-style: solid;
-  border-color: transparent rgba(0,0,0,0.2) transparent transparent;
+  border-color: transparent rgba(256,256,256, 0.9) transparent transparent;
 }
 
 
