@@ -40,7 +40,7 @@ jQuery(document).ready(function() {
   toBottom.on('click', function(e) {
     console.log("click success")
     e.preventDefault();
-    $('html, body, ui-view, div').animate({scrollTop: 1200}, '300');
+    $('html, body, ui-view, div').animate({scrollTop: 1500}, '300');
   });
 
   toTop.on('click', function(e) {

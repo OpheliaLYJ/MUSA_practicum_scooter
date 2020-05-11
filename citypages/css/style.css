@@ -474,8 +474,9 @@ p {
   margin-left: 415px;
 /*  border: 1px solid #333; */
   border-radius:4px;
-  width: 400px; /* Could be more or less, depending on screen size */
-  height: 200px;
+  width: 405px; /* Could be more or less, depending on screen size */
+  height: 395px;
+  text-align:justify;
 }
 
 #equity-Modal::after {
@@ -491,11 +492,12 @@ p {
 
 .modal-guide {
   background-color: white;
-  margin-top: 15%; /* 15% from the top and centered */
-  margin-left: 37.5%;
+  margin-top: 140px;; /* 15% from the top and centered */
+  margin-left: 470px;
   padding: 10px;
   border: 1px solid #888;
-  width: 55%; /* Could be more or less, depending on screen size */
+  border-radius:4px;
+  width: 750px; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
