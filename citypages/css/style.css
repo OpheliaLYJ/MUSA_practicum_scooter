@@ -87,7 +87,7 @@ font-weight: bold;
 
 #selectVar {
   position: relative;
-  color: white;
+  color: black !important;
   left: 10px;
 }
 
@@ -114,7 +114,7 @@ font-weight: bold;
 }
 .legend i {
     width: 18px;
-    height: 18px;
+    height: 16px;
     float: left;
     margin-right: 8px;
     opacity: 0.7;
@@ -538,4 +538,9 @@ p {
   border-radius: 5px;
   margin-left: 15px;
   margin-right: 15px;
+}
+
+#selectVar > option {
+    background: white !important;
+    color: black !important;
 }
